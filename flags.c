@@ -22,7 +22,9 @@ flags |= FLAGS_ARR[a];
 break;
 }
 if (FLAGS_CH[a] == 0)
+{
 break;
+}
 }
 *i = b - 1;
 return (flags);

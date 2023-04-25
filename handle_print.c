@@ -1,5 +1,5 @@
 #include "main.h"
-#include <unisted.h>
+#include <unistd.h>
 /**
  * handle_print - print argument
  * @fmt: string to print arguments
@@ -37,7 +37,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		if (fmt[*ind] == '\0')
 			return (-1);
 		unk_len += write(1, "%%", 1);
-		if (fmt[*ind + 1] == '')
+		if (fmt[*ind + 1] == ' ')
 			unk_len += write(1, "", 1);
 		else if (width)
 		{
@@ -48,7 +48,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 				--(*ind);
 			return (1);
 		}
-		unl_len += write(1, &fmt[*ind], 1);
+		unk_len += write(1, &fmt[*ind], 1);
 		return (unk_len);
 	}
 	return (p_char);
