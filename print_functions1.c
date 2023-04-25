@@ -71,7 +71,7 @@ return (write_unsgnd(0, n, buffer, flags, width, precision, size));
 int print_hexadecimal(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-return (print_hexa(types, "0123456789abcdef", buffer, flags, 
+return (print_hexa(types, "0123456789abcdef", buffer, flags,
 'x', width, precision, size));
 }
 /**
@@ -88,7 +88,7 @@ return (print_hexa(types, "0123456789abcdef", buffer, flags,
 int print_hexa_upper(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-return (print_hexa(types, "0123456789ABCDEF", buffer, flags, 
+return (print_hexa(types, "0123456789ABCDEF", buffer, flags,
 'X', width, precision, size));
 }
 /**
