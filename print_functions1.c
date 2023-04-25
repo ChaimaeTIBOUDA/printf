@@ -16,7 +16,7 @@ int n = BUFF_SIZE - 2;
 unsigned long int m = va_arg(types, unsigned long int);
 m = convert_size_unsgnd(m, size);
 if (m == 0)
-buffer[n++] = '0';
+buffer[n--] = '0';
 buffer[BUFF_SIZE - 1] = '\0';
 while (m > 0)
 {

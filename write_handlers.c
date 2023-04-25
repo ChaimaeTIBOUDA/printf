@@ -103,7 +103,7 @@ if (flags & F_MINUS && padd == ' ')
 {
 if (extra)
 buffer[--ind] = extra;
-return (write(1, &buffer[ind], length) + write(1, &buffer[i], i - 1));
+return (write(1, &buffer[ind], length) + write(1, &buffer[1], i - 1));
 }
 else if (!(flags & F_MINUS) && padd == ' ')
 {
@@ -113,15 +113,18 @@ return (write(1, &buffer[1], i - 1) + write(1, &buffer[ind], length));
 }
 else if (!(flags & F_MINUS) && padd == '0')
 {
-if (extra)
-buffer[--padd_st] = extra;
-return (write(1, &buffer[padd_st], i - padd_st) +
-write(1, &buffer[ind], length - (1 - padd_st)));
+	if (extra)
+		buffer[--padd_st] = extra;
+	return (write(1, &buffer[padd_st], i - padd_st) +
+				write(1, &buffer[ind], length -
+					(1 - padd_st)));
 }
 }
 if (extra)
 buffer[--ind] = extra;
-return (write(1, &buffer[ind], length));
+return (write(1, &buffer[1], i - 1) +
+	       write(1, &buffer[ind], length));
+
 }
 /**
  * write_unsgnd - write unsigned num
