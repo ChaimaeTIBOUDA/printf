@@ -1,70 +1,72 @@
 #include "main.h"
 /**
- * is_printable - char is printable or not
- * @c: char
- * Return: 1 or 0
+ * is_printable - Function that evaluates if a char is printable
+ * @c: Char to be evaluated.
+ * Return: 1 if c is printable, 0 otherwise
  */
 int is_printable(char c)
 {
-	if (c >= 32 && c < 127)
-		return (1);
-	return (0);
+if (c >= 32 && c < 127)
+return (1);
+return (0);
 }
 /**
- * append_hexa_code - ascii hexa code to buffer
- * @buffer: array
- * @i: index
- * @ascii_code: ascii
- * Return: 3
+ * append_hexa_code - Function that append ascci in hexadecimal
+ * code to buffer
+ * @buffer: Array of chars.
+ * @i: Index at which to start appending.
+ * @ascii_code: ASSCI CODE.
+ * Return: Always 3
  */
 int append_hexa_code(char ascii_code, char buffer[], int i)
 {
-	char table[] = "0123456789ABCDEF";
-
-	if (ascii_code < 0)
-		ascii_code *= -1;
-	buffer[i++] = '\\';
-	buffer[i++] = 'X';
-	buffer[i++] = table[ascii_code / 16];
-	buffer[i] = table[ascii_code % 16];
-	return (3);
+char map_to[] = "0123456789ABCDEF";
+/* The hexa format code is always 2 digits long */
+if (ascii_code < 0)
+ascii_code *= -1;
+buffer[i++] = '\\';
+buffer[i++] = 'x';
+buffer[i++] = map_to[ascii_code / 16];
+buffer[i] = map_to[ascii_code % 16];
+return (3);
 }
 /**
- * convert_size_number - pair num to size
- * @n: number
- * @size: size
- * Return: value
- */
-long int convert_size_number(long int n, int size)
-{
-	if (size == S_LONG)
-		return (n);
-	else if (size == S_SHORT)
-		return ((short)n);
-	return ((int)n);
-}
-/**
- * convert_size_unsgnd - pair number to size
- * @n: number
- * @size: size
- * Return: value
- */
-long int convert_size_unsgnd(unsigned long int n, int size)
-{
-	if (size == S_LONG)
-		return (n);
-	else if (size == S_SHORT)
-		return ((unsigned short)n);
-	return ((unsigned int)n);
-}
-/**
- * is_digit - char is a digit or not
- * @c: char
- * Return: 1 or 0
+ * is_digit - Function that verifies if a char is a digit
+ * @c: Char to be evaluated
+ * Return: 1 if c is a digit, 0 otherwise
  */
 int is_digit(char c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+if (c >= '0' && c <= '9')
+return (1);
+return (0);
+}
+/**
+ * convert_size_number - Function that casts a number
+ * to the specified size
+ * @num: Number to be casted.
+ * @size: Number indicating the type to be casted.
+ * Return: Casted value of num
+ */
+long int convert_size_number(long int num, int size)
+{
+if (size == S_LONG)
+return (num);
+else if (size == S_SHORT)
+return ((short)num);
+return ((int)num);
+}
+/**
+ * convert_size_unsgnd - Casts a number to the specified size
+ * @num: Number to be casted
+ * @size: Number indicating the type to be casted
+ * Return: Casted value of num
+ */
+long int convert_size_unsgnd(unsigned long int num, int size)
+{
+if (size == S_LONG)
+return (num);
+else if (size == S_SHORT)
+return ((unsigned short)num);
+return ((unsigned int)num);
 }

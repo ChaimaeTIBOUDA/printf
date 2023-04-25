@@ -101,6 +101,7 @@ return (print_hexa(types, "0123456789ABCDEF", buffer, flags,
  * @width: Width
  * @precision: Precision
  * @size: Size specifier
+ * @size: Size specification
  * Return: The number of chars printed
  */
 int print_hexa(va_list types, char map_to[], char buffer[],
@@ -127,4 +128,3 @@ buffer[n--] = '0';
 n++;
 return (write_unsgnd(0, n, buffer, flags, width, precision, size));
 }
-

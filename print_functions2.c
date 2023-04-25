@@ -12,33 +12,34 @@
 int print_pointer(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-char n = 0, m = ' ';
-int o = BUFF_SIZE - 2, p = 2, q = 1; /* p=2, for '0x' */
-unsigned long i;
+char extra_c = 0, padd = ' ';
+int ind = BUFF_SIZE - 2, length = 2, padd_start = 1;/* length=2, for '0x' */
+unsigned long num_addrs;
 char map_to[] = "0123456789abcdef";
-void *r = va_arg(types, void *);
+void *addrs = va_arg(types, void *);
 UNUSED(width);
 UNUSED(size);
-if (r == NULL)
+if (addrs == NULL)
 return (write(1, "(nil)", 5));
 buffer[BUFF_SIZE - 1] = '\0';
 UNUSED(precision);
-i = (unsigned long)r;
-while (i > 0)
+num_addrs = (unsigned long)addrs;
+while (num_addrs > 0)
 {
-buffer[o--] = map_to[i % 16];
-i /= 16;
-p++;
+buffer[ind--] = map_to[num_addrs % 16];
+num_addrs /= 16;
+length++;
 }
 if ((flags & F_ZERO) && !(flags & F_MINUS))
-m = '0';
+padd = '0';
 if (flags & F_PLUS)
-n = '+', p++;
+extra_c = '+', length++;
 else if (flags & F_SPACE)
-n = ' ', p++;
-o++;
-/* return (write(1, &buffer[l], BUFF_SIZE - l - 1));*/
-return (write_pointer(buffer, o, p, width, flags, m, n, q));
+extra_c = ' ', length++;
+ind++;
+/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
+return (write_pointer(buffer, ind, length,
+width, flags, padd, extra_c, padd_start));
 }
 /**
  * print_non_printable - Fcuntion that prints ascii codes in hexadecimal
@@ -101,8 +102,8 @@ s = ")Null(";
 for (n = 0 ; s[n] ; n++)
 for (n = n - 1 ; n >= 0 ; n--)
 {
-char o = s[n];
-write(1, &o, 1);
+char z = s[n];
+write(1, &z, 1);
 m++;
 }
 return (m);

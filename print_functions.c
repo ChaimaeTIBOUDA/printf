@@ -99,7 +99,7 @@ int print_int(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
 int n = BUFF_SIZE - 2;
-int i = 0;
+int is_negative = 0;
 long int m = va_arg(types, long int);
 unsigned long int o;
 m = convert_size_number(m, size);
@@ -107,10 +107,10 @@ if (m == 0)
 buffer[n--] = '0';
 buffer[BUFF_SIZE - 1] = '\0';
 o = (unsigned long int)m;
-if (n < 0)
+if (m < 0)
 {
 o = (unsigned long int)((-1) * m);
-i = 1;
+is_negative = 1;
 }
 while (o > 0)
 {
@@ -118,7 +118,7 @@ buffer[n--] = (o % 10) + '0';
 o /= 10;
 }
 n++;
-return (write_number(i, n, buffer, flags, width, precision, size));
+return (write_number(is_negative, n, buffer, flags, width, precision, size));
 }
 /**
  * print_binary - Function that prints an unsigned number
