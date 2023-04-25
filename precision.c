@@ -9,27 +9,27 @@
 int get_precision(const char *format, int *n, va_list l)
 {
 int a = *n + 1;
-int b = -1;
+int precision = -1;
 if (format[a] != '.')
-return (b);
-b = 0;
+return (precision);
+precision = 0;
 for (a += 1 ; format[a] != '\0' ; a++)
 {
 if (is_digit(format[a]))
 {
-b *= 10;
-b += format[a] - '0';
+precision *= 10;
+precision += format[a] - '0';
 }
 else if (format[a] == '*')
 {
 a++;
-b = va_arg(l, int);
+precision = va_arg(l, int);
 break;
 }
 else
 break;
 }
 *n = a - 1;
-return (b);
+return (precision);
 }
 
