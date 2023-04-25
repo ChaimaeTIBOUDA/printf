@@ -87,26 +87,26 @@ return (write(1, buffer, n + m));
 int print_reverse(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-char *s;
-int n, m = 0;
+char *str;
+int i, count = 0;
 UNUSED(buffer);
 UNUSED(flags);
 UNUSED(width);
 UNUSED(size);
-s = va_arg(types, char *);
-if (s == NULL)
+str = va_arg(types, char *);
+if (str == NULL)
 {
 UNUSED(precision);
-s = ")Null(";
+str = ")Null(";
 }
-for (n = 0 ; s[n] ; n++)
-for (n = n - 1 ; n >= 0 ; n--)
+for (i = 0 ; str[i] ; i++)
+for (i = i - 1 ; i >= 0 ; i--)
 {
-char z = s[n];
+char z = str[i];
 write(1, &z, 1);
-m++;
+count++;
 }
-return (m);
+return (count);
 }
 /**
  * print_rot13string - Funcction that prints a string in rot13
