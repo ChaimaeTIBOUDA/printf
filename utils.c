@@ -52,7 +52,7 @@ long int convert_size_number(long int n, int size)
 long int convert_size_unsgnd(unsigned long int n, int size)
 {
 	if (size == S_LONG)
-		return (num);
+		return (n);
 	else if (size == S_SHORT)
 		return ((unsigned short)n);
 	return ((unsigned int)n);
