@@ -5,11 +5,11 @@
  * @i: List of arguments to be printed
  * Return: Precision
  */
-int get_size(cont char *format, int *i)
+int get_size(const char *format, int *i)
 {
 int a = *i + 1;
 int b = 0;
-if (format[a] == 'l'
+if (format[a] == 'l')
 b = S_LONG;
 else if (format[a] == 'h')
 b = S_SHORT;

@@ -12,9 +12,8 @@
 int print_char(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-char n = va_arg(types, int)
-return (handle_write_char(c, buffer, flags, width, precision, size));
-
+char n = va_arg(types, int);
+return (handle_write_char(n, buffer, flags, width, precision, size));
 }
 /**
  * print_string - Function that print a string
@@ -76,7 +75,7 @@ return (write(1, str, length));
  * Return: The number of chars printed
  */
 int print_percent(va_list types, char buffer[],
-int flags, int width, int precision, int size);
+int flags, int width, int precision, int size)
 {
 UNUSED(types);
 UNUSED(buffer);
@@ -97,7 +96,7 @@ return (write(1, "%%", 1));
  * Return: The number of chars printed
  */
 int print_int(va_list types, char buffer[],
-int flags, int width, int precision, int size);
+int flags, int width, int precision, int size)
 {
 int n = BUFF_SIZE - 2;
 int i = 0;
@@ -132,7 +131,7 @@ return (write_number(i, n, buffer, flags, width, precision, size));
  * Return: The number of chars printed
  */
 int print_binary(va_list types, char buffer[],
-int flags, int width, int precision, int size);
+int flags, int width, int precision, int size)
 {
 unsigned int n, m, o, p;
 unsigned int q[32];

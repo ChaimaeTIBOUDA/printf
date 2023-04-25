@@ -86,9 +86,9 @@ return (write(1, buffer, n + m));
 int print_reverse(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-char *s
+char *s;
 int n, m = 0;
-UNUSED(buffer)
+UNUSED(buffer);
 UNUSED(flags);
 UNUSED(width);
 UNUSED(size);
