@@ -16,23 +16,24 @@
 #define S_SHORT 1
 
 /**
- * struct fmt - Struct
+ * struct fmt - Struct op
  * @fmt: format
  * @fn: function
  */
 struct fmt
 {
-	char fmt;
-	int (*fn)(va_list, char[], int, int, int, int);
+char fmt;
+int (*fn)(va_list, char[], int, int, int, int);
 };
 /**
- * typedef struct fmt fmt_t - struct
+ * typedef struct fmt fmt_t - struct op
  * @fmt: format
  * @fm_t: function
  */
 typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i, va_list list, char buffer[],                      int flags, int width, int precision, int size);
+int handle_print(const char *fmt, int *i, va_list list, char buffer[],
+int flags, int width, int precision, int size);
 /***FUNCTIONS***/
 /*Functions to print chars and strings*/
 int print_char(va_list types, char buffer[], int flags,
@@ -54,7 +55,7 @@ int print_hexadecimal(va_list types, char buffer[], int flags,
 		int width, int precision, int size);
 int print_hexa_upper(va_list types, char buffer[], int flags,
 		int width, int precision, int size);
-int print_hexa(va_list types, char map_to, char buffer[], int flags,
+int print_hexa(va_list types, char map_to[], char buffer[], int flags,
 		char flag_ch, int width, int precision, int size);
 /*print non printabale characters*/
 int print_non_printable(va_list types, char buffer[], int flags,
@@ -65,7 +66,7 @@ int print_pointer(va_list types, char buffer[], int flags,
 /*print handlers*/
 int get_flags(const char *format, int *i);
 int get_width(const char *format, int *i, va_list list);
-int get_precision(const char *format, int *i, va_list list);
+int get_precision(const char *format, int *n, va_list l);
 int get_size(const char *format, int *i);
 /*print in reverse*/
 int print_reverse(va_list types, char buffer[], int flags,
