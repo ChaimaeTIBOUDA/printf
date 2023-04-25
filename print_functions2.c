@@ -99,11 +99,11 @@ UNUSED(precision);
 s = ")Null(";
 }
 for (n = 0 ; s[n] ; n++)
-;
 for (n = n - 1 ; n >= 0 ; n--)
 {
 char o = s[n];
 write(1, &o, 1);
+m++;
 }
 return (m);
 }
