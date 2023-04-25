@@ -57,3 +57,14 @@ long int convert_size_unsgnd(unsigned long int n, int size)
 		return ((unsigned short)n);
 	return ((unsigned int)n);
 }
+/**
+ * is_digit - char is a digit or not
+ * @c: char
+ * Return: 1 or 0
+ */
+int is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
